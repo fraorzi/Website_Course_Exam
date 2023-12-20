@@ -1,14 +1,13 @@
-// Home.js
 import React from 'react';
-import './Home.scss';
+import CourseDescription from '../../components/CourseDescription/CourseDescription';
 
-const Home = () => {
+function Home() {
     return (
-        <div className="home">
-            <h2>Welcome to My Matura Website!</h2>
-            {/* Dodaj treść strony głównej */}
+        <div>
+            <h1>Featured Courses</h1>
+            <CourseDescription />
         </div>
     );
-};
+}
 
 export default Home;
