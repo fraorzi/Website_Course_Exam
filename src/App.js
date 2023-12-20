@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import CourseDetails from './pages/CourseDetails/CourseDetails';
@@ -14,13 +14,13 @@ const App = () => {
         <Router>
             <div className="app">
                 <Header />
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/course/:id" component={CourseDetails} />
-                    <Route path="/description/:id" component={CourseDescription} />
-                    <Route path="/cart" component={ShoppingCart} />
-                    <Route path="/checkout" component={Checkout} />
-                </Switch>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/course/:id" element={<CourseDetails />} />
+                    <Route path="/description/:id" element={<CourseDescription />} />
+                    <Route path="/cart" element={<ShoppingCart />} />
+                    <Route path="/checkout" element={<Checkout />} />
+                </Routes>
             </div>
         </Router>
     );
