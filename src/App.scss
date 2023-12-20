@@ -1,0 +1,14 @@
+// App.scss
+@import './components/Header/Header.scss';
+@import './components/CourseDescription/CourseDescription.scss';
+@import './components/ShoppingCart/ShoppingCart.scss';
+@import './pages/Home/Home.scss';
+@import './pages/CourseDetails/CourseDetails.scss';
+@import './pages/Checkout/Checkout.scss';
+
+/* Dodaj inne style globalne dla aplikacji */
+.app {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  /* Dodaj inne style globalne dla aplikacji */
+}
