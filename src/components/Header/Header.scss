@@ -1,17 +1,53 @@
-// Header.scss
 .header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-}
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 
-.header a {
-  color: #fff;
-  margin-right: 20px;
-  text-decoration: none;
-}
+    .logo {
+        font-family: 'Arial', sans-serif;
+        .logo-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
 
-.header a:hover {
-  text-decoration: underline;
+            &:hover {
+                color: #ffeb3b;
+            }
+        }
+    }
+
+    .main-nav ul {
+        list-style: none;
+        display: flex;
+
+        li {
+            margin: 0 10px;
+
+            a {
+                text-decoration: none;
+                color: white;
+                transition: color 0.3s ease;
+
+                &.active, &:hover {
+                    color: #ffeb3b;
+                }
+            }
+        }
+    }
+
+    .user-options {
+        .cart-icon {
+            font-size: 1.5em;
+            color: white;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
 }
