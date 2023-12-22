@@ -11,7 +11,6 @@ const Header = () => {
             <nav className="main-nav">
                 <ul>
                     <li><NavLink to="/" exact activeClassName="active">Home</NavLink></li>
-                    <li><NavLink to="/cart" activeClassName="active">Shopping Cart</NavLink></li>
                     <li><NavLink to="/checkout" activeClassName="active">Checkout</NavLink></li>
                 </ul>
             </nav>
