@@ -8,21 +8,24 @@ import CourseDescription from './components/CourseDescription/CourseDescription'
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Checkout from './pages/Checkout/Checkout';
 import './App.scss';
+import {CartProvider} from "./components/CartContext/CartContext";
 
 const App = () => {
     return (
-        <Router>
-            <div className="app">
-                <Header />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/course/:id" element={<CourseDetails />} />
-                    <Route path="/description/:id" element={<CourseDescription />} />
-                    <Route path="/cart" element={<ShoppingCart />} />
-                    <Route path="/checkout" element={<Checkout />} />
-                </Routes>
-            </div>
-        </Router>
+        <CartProvider>
+            <Router>
+                <div className="app">
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/course/:id" element={<CourseDetails />} />
+                        <Route path="/description/:id" element={<CourseDescription />} />
+                        <Route path="/cart" element={<ShoppingCart />} />
+                        <Route path="/checkout" element={<Checkout />} />
+                    </Routes>
+                </div>
+            </Router>
+        </CartProvider>
     );
 };
 

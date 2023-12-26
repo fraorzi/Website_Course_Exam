@@ -1,30 +1,14 @@
 // ShoppingCart.js
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './ShoppingCart.scss';
+import { useCart } from '../CartContext/CartContext'; // Upewnij się, że ścieżka do CartContext jest poprawna
 
 const ShoppingCart = () => {
-    // Założenie, że masz stan koszyka w komponencie nadrzędnym
-    const [cartItems, setCartItems] = useState([
-        { id: 1, name: 'Product 1', price: 20, quantity: 2 },
-        { id: 2, name: 'Product 2', price: 30, quantity: 1 },
-        // Dodaj inne produkty według potrzeb
-    ]);
+    const { cartItems, removeFromCart, updateCartItem, calculateTotal } = useCart();
 
     const updateQuantity = (id, newQuantity) => {
-        const updatedCartItems = cartItems.map(item =>
-            item.id === id ? { ...item, quantity: newQuantity } : item
-        );
-        setCartItems(updatedCartItems);
-    };
-
-    const removeItem = (id) => {
-        const updatedCartItems = cartItems.filter(item => item.id !== id);
-        setCartItems(updatedCartItems);
-    };
-
-    const calculateTotal = () => {
-        return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+        updateCartItem(id, newQuantity);
     };
 
     return (
@@ -44,13 +28,13 @@ const ShoppingCart = () => {
                                     <span>{item.quantity}</span>
                                     <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
                                 </div>
-                                <button onClick={() => removeItem(item.id)}>Remove</button>
+                                <button onClick={() => removeFromCart(item.id)}>Remove</button>
                             </li>
                         ))}
                     </ul>
                     <div className="total">
                         <span>Total:</span>
-                        <span>${calculateTotal()}</span>
+                        <span>${calculateTotal().toFixed(2)}</span>
                     </div>
                     <Link to="/checkout">Proceed to Checkout</Link>
                 </>
