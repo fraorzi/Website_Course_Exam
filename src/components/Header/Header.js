@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './Header.scss';
-import { useCart } from '../CartContext/CartContext'; // Załóżmy, że CartContext jest w tym samym folderze
+import { useCart } from '../CartContext/CartContext';
 
 const Header = () => {
+    const navigate = useNavigate();
     const { cartItems } = useCart();
     const cartCount = cartItems.length;
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,7 +18,7 @@ const Header = () => {
         if (isLoggedIn) {
             logout();
         } else {
-            login();
+            navigate('/login');
         }
     };
 
@@ -26,36 +27,10 @@ const Header = () => {
         return Boolean(token);
     }
 
-    function login() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.token) {
-                    localStorage.setItem('userToken', data.token);
-                    setIsLoggedIn(true);
-                    window.location.href = '/';
-                } else {
-                    alert('Logowanie nieudane: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Błąd podczas logowania:', error);
-            });
-    }
-
     function logout() {
         localStorage.removeItem('userToken');
         setIsLoggedIn(false);
-        window.location.href = '/login';
+        navigate('/'); // Programowe przekierowanie do strony głównej
     }
 
     return (
@@ -73,9 +48,14 @@ const Header = () => {
                 <Link to="/cart" className="cart-icon">
                     🛒 {cartCount}
                 </Link>
-                <button onClick={handleLoginLogout}>
-                    {isLoggedIn ? 'Log Out' : 'Log In'}
-                </button>
+                {isLoggedIn ? (
+                    <button onClick={handleLoginLogout}>Log Out</button>
+                ) : (
+                    <>
+                        <button onClick={handleLoginLogout}>Log In</button>
+                        <button onClick={() => navigate('/register')} style={{ marginLeft: "10px" }}>Register</button>
+                    </>
+                )}
             </div>
         </header>
     );

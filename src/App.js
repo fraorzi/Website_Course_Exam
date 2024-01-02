@@ -7,6 +7,8 @@ import CourseDetails from './pages/CourseDetails/CourseDetails';
 import CourseDescription from './components/CourseDescription/CourseDescription';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Checkout from './pages/Checkout/Checkout';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 import './App.scss';
 import {CartProvider} from "./components/CartContext/CartContext";
 
@@ -18,6 +20,8 @@ const App = () => {
                     <Header />
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
                         <Route path="/course/:id" element={<CourseDetails />} />
                         <Route path="/description/:id" element={<CourseDescription />} />
                         <Route path="/cart" element={<ShoppingCart />} />
