@@ -47,8 +47,8 @@ const Header = () => {
             </div>
             <nav className="main-nav">
                 <ul>
-                    <li><NavLink to="/" exact activeClassName="active">Home</NavLink></li>
-                    <li><NavLink to="/checkout" activeClassName="active">Checkout</NavLink></li>
+                    <li><NavLink to="/" exact className="active">Home</NavLink></li>
+                    <li><NavLink to="/checkout" className="active">Checkout</NavLink></li>
                 </ul>
             </nav>
             <div className="user-options">
