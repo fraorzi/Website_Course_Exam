@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './Header.scss';
 import { useCart } from '../CartContext/CartContext';
+import { FaUser } from 'react-icons/fa'
 
 const Header = () => {
     const navigate = useNavigate();
     const { cartItems } = useCart();
     const cartCount = cartItems.length;
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [username, setUsername] = useState('');
 
     useEffect(() => {
         const loggedIn = checkLoginStatus();
@@ -24,7 +26,12 @@ const Header = () => {
 
     function checkLoginStatus() {
         const token = localStorage.getItem('userToken');
-        return Boolean(token);
+        const savedUsername = localStorage.getItem('username');  // Przykład, jak możesz przechowywać nazwę użytkownika
+        if (token && savedUsername) {
+            setUsername(savedUsername);
+            return true;
+        }
+        return false;
     }
 
     function logout() {
@@ -49,7 +56,10 @@ const Header = () => {
                     🛒 {cartCount}
                 </Link>
                 {isLoggedIn ? (
-                    <button onClick={handleLoginLogout}>Log Out</button>
+                    <>
+                        <FaUser /> <span>{username}</span>  // Wyświetl ikonę i nazwę użytkownika
+                        <button onClick={handleLoginLogout}>Log Out</button>
+                    </>
                 ) : (
                     <>
                         <button onClick={handleLoginLogout}>Log In</button>
