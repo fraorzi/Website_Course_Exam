@@ -1,28 +1,38 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-const courseDetails = {
-  1: { title: "Web Development", details: "Extended details about Web Development." },
-  2: { title: "Data Science", details: "Extended details about Data Science." },
-  3: { title: "Digital Marketing", details: "Extended details about Digital Marketing." }
+const detailedCourses = {
+    1: {
+        id: 1,
+        title: "Matematyka dla maturzystów",
+        detailedDescription: "Szczegółowy opis kursu matematyki...",
+        imageUrl: "/images/kurs-matura-matematyka-logo.png",
+        // ... inne szczegółowe informacje ...
+    },
+    2: {
+        id: 2,
+        title: "Fizyka od podstaw",
+        detailedDescription: "Szczegółowy opis kursu fizyki...",
+        imageUrl: "/images/kurs-matura-matematyka-logo.png",
+        // ... inne szczegółowe informacje ...
+    },
+    // ... więcej hardkodowanych szczegółów kursów ...
 };
 
 function CourseDetails() {
-  const { id } = useParams();
-  const course = courseDetails[id];
+    const { courseId } = useParams();
+    const course = detailedCourses[courseId];
 
-  return (
-      <div>
-        {course ? (
-            <div>
-              <h2>{course.title}</h2>
-              <p>{course.details}</p>
-            </div>
-        ) : (
-            <p>Course not found.</p>
-        )}
-      </div>
-  );
+    if (!course) return <div>Course not found</div>;
+
+    return (
+        <div>
+            <h1>{course.title}</h1>
+            <img src={course.imageUrl} alt={course.title} />
+            <p>{course.detailedDescription}</p>
+            {/* Dodaj więcej szczegółowych informacji o kursie tutaj */}
+        </div>
+    );
 }
 
 export default CourseDetails;
