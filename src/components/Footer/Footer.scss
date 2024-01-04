@@ -1,0 +1,45 @@
+.site-footer {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #e7e7e7;
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+      margin-bottom: 5px;
+
+      &:hover {
+        color: #007bff;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      a {
+        margin: 0 5px;
+        font-size: 24px;
+      }
+    }
+  }
+}

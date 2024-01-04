@@ -9,6 +9,7 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Checkout from './pages/Checkout/Checkout';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Footer from './components/Footer/Footer';
 import './App.scss';
 import {CartProvider} from "./components/CartContext/CartContext";
 
@@ -27,6 +28,7 @@ const App = () => {
                         <Route path="/cart" element={<ShoppingCart />} />
                         <Route path="/checkout" element={<Checkout />} />
                     </Routes>
+                    <Footer />
                 </div>
             </Router>
         </CartProvider>
