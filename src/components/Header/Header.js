@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './Header.scss';
 import { useCart } from '../CartContext/CartContext';
-import { FaUser } from 'react-icons/fa'
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -20,13 +20,13 @@ const Header = () => {
         if (isLoggedIn) {
             logout();
         } else {
-            navigate('/login');
+            navigate('/auth');
         }
     };
 
     function checkLoginStatus() {
         const token = localStorage.getItem('userToken');
-        const savedUsername = localStorage.getItem('username');  // Przykład, jak możesz przechowywać nazwę użytkownika
+        const savedUsername = localStorage.getItem('username');
         if (token && savedUsername) {
             setUsername(savedUsername);
             return true;
@@ -37,7 +37,7 @@ const Header = () => {
     function logout() {
         localStorage.removeItem('userToken');
         setIsLoggedIn(false);
-        navigate('/'); // Programowe przekierowanie do strony głównej
+        navigate('/');
     }
 
     return (
@@ -57,13 +57,12 @@ const Header = () => {
                 </Link>
                 {isLoggedIn ? (
                     <>
-                        <FaUser /> <span>{username}</span>  // Wyświetl ikonę i nazwę użytkownika
+                        <FaUser /> <span>{username}</span>
                         <button onClick={handleLoginLogout}>Log Out</button>
                     </>
                 ) : (
                     <>
-                        <button onClick={handleLoginLogout}>Log In</button>
-                        <button onClick={() => navigate('/register')} style={{ marginLeft: "10px" }}>Register</button>
+                        <button onClick={handleLoginLogout}>Log In / Register</button>
                     </>
                 )}
             </div>
