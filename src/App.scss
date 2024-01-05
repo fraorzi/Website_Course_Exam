@@ -5,6 +5,12 @@
 @import './pages/Home/Home.scss';
 @import './pages/CourseDetails/CourseDetails.scss';
 @import './pages/Checkout/Checkout.scss';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+@import 'base/reset';
+@import 'base/base';
+
 
 /* Dodaj inne style globalne dla aplikacji */
 .app {
