@@ -5,7 +5,7 @@ function Home() {
     const courseIds = [1, 2, 3];
 
     return (
-        <div>
+        <div id="coursesSection">
             <h1>Featured Courses</h1>
             {courseIds.map(courseId => (
                 <CourseDescription key={courseId} courseId={courseId} />

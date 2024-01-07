@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 import './Header.scss';
 import { useCart } from '../CartContext/CartContext';
 import { FaUser } from 'react-icons/fa';
@@ -47,8 +48,12 @@ const Header = () => {
             </div>
             <nav className="main-nav">
                 <ul>
-                    <li><NavLink to="/" exact className="active">Home</NavLink></li>
-                    <li><NavLink to="/checkout" className="active">Checkout</NavLink></li>
+                    <li>
+                        <ScrollLink to="coursesSection" spy={true} smooth={true} duration={500}>
+                        Przewiń do kursów
+                        </ScrollLink>
+                    </li>
+
                 </ul>
             </nav>
             <div className="user-options">
