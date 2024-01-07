@@ -15,11 +15,12 @@ const ShoppingCart = () => {
         <div className="shopping-cart">
             <h2>Shopping Cart</h2>
             {cartItems.length === 0 ? (
-                <p>Your cart is empty.</p>
+                <p>Your cart is empty. <img src="../../../public/images/cart-xmark-svgrepo-com.svg" alt="Empty Cart"/></p>
+
             ) : (
                 <>
                     <ul>
-                        {cartItems.map(item => (
+                    {cartItems.map(item => (
                             <li key={item.id}>
                                 <span>{item.name}</span>
                                 <span>${item.price}</span>

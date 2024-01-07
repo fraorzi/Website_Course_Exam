@@ -24,7 +24,7 @@ function CourseDescription({ courseId }) {
 
     return (
         <div className="course">
-            <img src={course.imageUrl} alt={course.title} />
+            <img src={course.imageUrl} alt={course.title} className="course-image"/>
             <h2>{course.title}</h2>
             <p>{course.description}</p>
             <Link to={`/course/${course.id}`}>View Details</Link>

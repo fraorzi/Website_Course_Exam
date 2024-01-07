@@ -28,7 +28,7 @@ function CourseDetails() {
     return (
         <div>
             <h1>{course.title}</h1>
-            <img src={course.imageUrl} alt={course.title} />
+            <img src={course.imageUrl} alt={course.title} className="detailed-course-image"/>
             <p>{course.detailedDescription}</p>
             {/* Dodaj więcej szczegółowych informacji o kursie tutaj */}
         </div>
