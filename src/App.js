@@ -9,7 +9,7 @@ const App = () => {
     return (
         <CartProvider>
             <Router>
-                <AppContent /> {/* Use the new component here */}
+                <AppContent />
             </Router>
         </CartProvider>
     );
