@@ -69,6 +69,7 @@ function Auth() {
     };
 
     return (
+        <div className="auth-container">
         <div className={`container ${isLoginActive ? "" : "right-panel-active"}`} id="container">
             {/* Rejestracja */}
             <div className="form-container sign-up-container">
@@ -99,6 +100,7 @@ function Auth() {
                 </div>
             </div>
         </div>
+            </div>
     );
 }
 
