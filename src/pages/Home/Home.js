@@ -1,8 +1,8 @@
 import React from 'react';
-import CourseDescription from '../../components/CourseDescription/CourseDescription';
+import CourseDescription, {sampleCourses} from '../../components/CourseDescription/CourseDescription';
 
 function Home() {
-    const courseIds = [1, 2, 3];
+    const courseIds = Object.keys(sampleCourses).map(Number);
 
     return (
         <div id="coursesSection">

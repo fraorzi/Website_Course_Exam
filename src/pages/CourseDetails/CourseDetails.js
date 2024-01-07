@@ -1,20 +1,39 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import {useCart} from "../../components/CartContext/CartContext";
+import './CourseDetails.scss';
 
 const detailedCourses = {
     1: {
         id: 1,
         title: "Matematyka dla maturzystów",
-        detailedDescription: "Szczegółowy opis kursu matematyki...",
+        detailedDescription: "Szczegółowy opis kursu matematyki, omawiający analizę matematyczną, algebrę, geometrię...",
         imageUrl: "/images/kurs-matura-matematyka-logo.png",
+        price: 200
         // ... inne szczegółowe informacje ...
     },
     2: {
         id: 2,
         title: "Fizyka od podstaw",
-        detailedDescription: "Szczegółowy opis kursu fizyki...",
-        imageUrl: "/images/kurs-matura-matematyka-logo.png",
+        detailedDescription: "Zrozum podstawowe prawa fizyki, naucz się myślenia naukowego i przygotuj się do egzaminów.",
+        imageUrl: "/images/kurs-matura-fizyka-logo.png",
+        price: 180
+        // ... inne szczegółowe informacje ...
+    },
+    3: {
+        id: 3,
+        title: "Programowanie w Python",
+        detailedDescription: "Naucz się Python.",
+        imageUrl: "/images/kurs-python-logo.png",
+        price: 250
+        // ... inne szczegółowe informacje ...
+    },
+    4: {
+        id: 4,
+        title: "Historia",
+        detailedDescription: "Historia bla bla bla",
+        imageUrl: "/images/kurs-historia-logo.png",
+        price: 350
         // ... inne szczegółowe informacje ...
     },
     // ... więcej hardkodowanych szczegółów kursów ...
@@ -38,7 +57,7 @@ function CourseDetails() {
     if (!course) return <div>Course not found</div>;
 
     return (
-        <div>
+        <div className="course-details">
             <h1>{course.title}</h1>
             <img src={course.imageUrl} alt={course.title} className="detailed-course-image"/>
             <p>{course.detailedDescription}</p>

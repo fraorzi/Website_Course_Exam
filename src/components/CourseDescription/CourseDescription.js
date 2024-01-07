@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const sampleCourses = {
+export const sampleCourses = {
     1: {
         id: 1,
         title: "Matematyka dla maturzystów",
@@ -12,7 +12,19 @@ const sampleCourses = {
         id: 2,
         title: "Fizyka od podstaw",
         description: "Zrozum fizykę i przygotuj się do egzaminów.",
-        imageUrl: "/images/kurs-matura-matematyka-logo.png"
+        imageUrl: "/images/kurs-matura-fizyka-logo.png"
+    },
+    3: {
+        id: 3,
+        title: "Programowanie w Pythonie",
+        description: "Poznaj podstawy programowania z Pythonem.",
+        imageUrl: "/images/kurs-python-logo.png"
+    },
+    4: {
+        id: 4,
+        title: "Historia sztuki",
+        description: "Odkryj piękno i historię sztuki światowej.",
+        imageUrl: "/images/kurs-historia-sztuki-logo.png"
     },
     // ... więcej hardkodowanych kursów ...
 };
@@ -23,7 +35,7 @@ function CourseDescription({ courseId }) {
     if (!course) return <div>Course not found</div>;
 
     return (
-        <div className="course">
+        <div className="courseDescription">
             <img src={course.imageUrl} alt={course.title} className="course-image"/>
             <h2>{course.title}</h2>
             <p>{course.description}</p>

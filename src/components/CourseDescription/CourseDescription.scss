@@ -1,5 +1,55 @@
-// CourseDescription
-.course-image {
-  max-width: 250px; // Zmniejsz szerokość obrazu
-  height: auto; // Zachowaj proporcje
+// CourseDescription.scss
+
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$font-stack: Helvetica, sans-serif;
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.courseDescription {
+  @extend %flex-center;
+  flex-direction: column;
+  background-color: $secondary-color;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  img.course-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 4px;
+  }
+
+  h2 {
+    color: $primary-color;
+    font-family: $font-stack;
+  }
+
+  p {
+    font-family: $font-stack;
+  }
+
+  a {
+    background-color: $primary-color;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+// Responsywność
+@media only screen and (max-width: 600px) {
+  .course {
+    width: 90%;
+    margin: 15px auto;
+  }
 }

@@ -1,5 +1,60 @@
-// CourseDetails
-.detailed-course-image {
-  max-width: 250px; // Zmniejsz szerokość obrazu
-  height: auto; // Zachowaj proporcje
+// CourseDetails.scss
+
+$primary-color: #2c3e50;
+$secondary-color: #8e44ad;
+$font-stack: 'Helvetica Neue', sans-serif;
+
+%card-style {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.course-details {
+  @extend %card-style;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: $secondary-color;
+  color: white;
+
+  h1 {
+    font-family: $font-stack;
+    font-size: 2em;
+  }
+
+  .detailed-course-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-family: $font-stack;
+    line-height: 1.6;
+  }
+
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .course-details {
+    padding: 15px;
+    h1 {
+      font-size: 1.5em;
+    }
+  }
 }
