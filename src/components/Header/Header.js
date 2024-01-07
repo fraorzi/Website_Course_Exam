@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import './Header.scss';
 import { useCart } from '../CartContext/CartContext';
@@ -7,10 +7,31 @@ import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const { cartItems } = useCart();
     const cartCount = cartItems.length;
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState('');
+
+    const handleScrollOrNavigate = () => {
+        if (location.pathname === '/') {
+            // Jesteśmy na stronie głównej, więc przewijamy do sekcji kursów
+            const section = document.getElementById('coursesSection');
+            section.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            // Nie jesteśmy na stronie głównej, więc najpierw nawigujemy, a następnie przewijamy
+            navigate('/', { state: { scrollToCourses: true } });
+        }
+    };
+
+    useEffect(() => {
+        if (location.state?.scrollToCourses) {
+            const section = document.getElementById('coursesSection');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, [location]);
 
     useEffect(() => {
         const loggedIn = checkLoginStatus();
@@ -49,15 +70,15 @@ const Header = () => {
             <nav className="main-nav">
                 <ul>
                     <li>
-                        <ScrollLink to="coursesSection" spy={true} smooth={true} duration={500}>
-                        Przewiń do kursów
-                        </ScrollLink>
+                        <button onClick={handleScrollOrNavigate}>
+                            Przewiń do kursów
+                        </button>
                     </li>
 
                 </ul>
             </nav>
             <div className="user-options">
-                <Link to="/cart" className="cart-icon">
+            <Link to="/cart" className="cart-icon">
                     🛒 {cartCount}
                 </Link>
                 {isLoggedIn ? (
